@@ -14,9 +14,10 @@ pipeline {
                 sh 'ssh -o StrictHostKeyChecking=no root@myUbuntuSrv \'hostname\''
             }
         }
-	stage("First step"){
+	stage("Second step"){
 	    steps{
                sh 'ssh -o StrictHostKeyChecking=no root@myUbuntuSrv \'uptime\''
-	    }        
+	    }
+	}
     }
 }

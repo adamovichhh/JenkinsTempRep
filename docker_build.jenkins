@@ -12,7 +12,8 @@ pipeline {
         stage("Create docker image") {
             steps {
                 dir('docker'){
-                    sh 'docker build -t toolbox:latest . '
+                    sh 'docker build -t adamovichhh/toolbox:latest . '
+                                       
                 }           
              }
         }

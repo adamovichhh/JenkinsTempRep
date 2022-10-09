@@ -9,6 +9,13 @@ pipeline {
         timestamps()
     }
     stages {
+        stage("Docker login"){
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'DockerHub_adamovichh', usernameVariable: 'Username', passwordVariable: 'Password')]){
+                    sh 'docker login -u $Username -p $Password'
+                }
+            }
+        }
         stage("Create docker image") {
             steps {
                 dir('docker'){
@@ -16,6 +23,11 @@ pipeline {
                                        
                 }           
              }
+        }
+        stage("Docker push") {
+            steps {
+                    sh 'docker push adamovichhh/toolbox:latest'  
+            }
         }
     }
 }
